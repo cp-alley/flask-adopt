@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Users {% endblock %}
+
+{% block content %}
+<!--users comment for testing-->
+<!--
+{% for msg in get_flashed_messages() %}
+  <p style="color: green">{{ msg }}</p>
+{% endfor %} -->
+
+<div>
+  <form action="/pets/add" method="POST">
+    {{ form.hidden_tag() }}
+
+    {% for field in form
+      if field.widget.input_type != 'hidden' %}
+      <p>
+      {{ field.label }}
+      {{ field }}
+
+
+      {% for error in field.errors %}
+      {{ error }}
+      {% endfor %}
+      </p>
+      {% endfor %}
+      <button type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
