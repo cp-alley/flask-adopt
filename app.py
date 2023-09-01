@@ -26,14 +26,15 @@ toolbar = DebugToolbarExtension(app)
 
 @app.get('/')
 def show_home_page():
+    """Shows list of all pets"""
     pets = Pet.query.all()
 
     return render_template('pets.html', pets=pets)
 
 
-@app.route("/pets/add", methods=["GET", "POST"])
+@app.route("/add", methods=["GET", "POST"])
 def add_new_pet():
-    """Process the add form, adding a new pet and going back to /pets"""
+    """Process the add form, adding a new pet and going back to home page"""
 
     form = AddPetForm()
 
@@ -60,9 +61,9 @@ def add_new_pet():
         return render_template('add_pet.html', form=form)
 
 
-@app.route('/pets/<int:pet_id>', methods=["GET", "POST"])
-# @app.get('/pets/<int:pet_id>')
+@app.route('/<int:pet_id>', methods=["GET", "POST"])
 def show_pet_details(pet_id):
+    """Show pet details, pet edit form, and handle form"""
 
     pet = Pet.query.get_or_404(pet_id)
     form = EditPetForm(obj=pet)
