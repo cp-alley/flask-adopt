@@ -9,15 +9,18 @@
   <p style="color: green">{{ msg }}</p>
 {% endfor %} -->
 
-<div>
-  <form action="/pets/add" method="POST">
+<div class="mt-3">
+  <form action="/add" method="POST">
     {{ form.hidden_tag() }}
 
     {% for field in form
       if field.widget.input_type != 'hidden' %}
       <p>
       {{ field.label }}
-      {{ field }}
+
+        {{ field }}
+
+
 
 
       {% for error in field.errors %}
@@ -25,7 +28,7 @@
       {% endfor %}
       </p>
       {% endfor %}
-      <button type="submit">Submit</button>
+      <button class="btn btn-success" type="submit">Submit</button>
   </form>
 </div>
 

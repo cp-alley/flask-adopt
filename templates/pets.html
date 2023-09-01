@@ -10,23 +10,29 @@
 {% endfor %} -->
 
 <div>
-  <ul class="available-pets-list">
+  <h1 class="mt-3">Pets</h1>
+  <ul class="available-pets-list list-unstyled">
     {% for pet in pets %}
     <li>
-      <a href="/pets/{{ pet.id }}"> {{ pet.name }}</a>
+      <p >
+        <a class="text-decoration-none" href="/{{ pet.id }}"> {{ pet.name }}</a>
+        {% if pet.available %}
+        <span class="fw-bold">
+          is available!
+        </span>
+        {% endif %}
+      </p>
       {% if pet.photo_url %}
-        <img src="{{ pet.photo_url }}" alt="A Photo of {{ pet.name }}">
+        <img class="img-thumbnail img-fluid" src="{{ pet.photo_url }}" alt="A Photo of {{ pet.name }}">
       {% endif %}
-      {% if pet.available %}
-        <p style="font-weight: bold">Available</p>
-      {% endif %}
+
     </li>
     {% endfor %}
 
   </ul>
 
-  <form action="/pets/add">
-    <button>Add</button>
+  <form action="/add">
+    <button class="btn btn-success">Add</button>
   </form>
 </div>
 

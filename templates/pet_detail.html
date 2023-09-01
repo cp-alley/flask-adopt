@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<div>
+<div class="mt-3">
   <h3>{{ pet.name }}</h3>
 
   <ul>
     {% if pet.photo_url %}
-      <li><img src="pet.photo_url" alt="Photo of {{ pet.name }}"></li>
+      <li><img src="{{ pet.photo_url }}" alt="Photo of {{ pet.name }}"></li>
     {% endif %}
     <li>{{ pet.age }}</li>
     <li>{{ pet.species }}</li>
@@ -19,7 +19,7 @@
 
 
 <div>
-  <form action="/pets/{{ pet.id }}" method="POST">
+  <form action="/{{ pet.id }}" method="POST">
     {{ form.hidden_tag() }}
 
     {% for field in form
@@ -33,7 +33,7 @@
       {% endfor %}
       </p>
       {% endfor %}
-      <button type="submit">Edit Pet</button>
+      <button class="btn btn-success" type="submit">Edit Pet</button>
   </form>
 </div>
 
