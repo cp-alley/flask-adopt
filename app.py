@@ -46,10 +46,12 @@ def add_new_pet():
         notes = form.notes.data
         available = form.available.data
 
+#dictionary comprehension, exclude csrf token, unupack syntax
         pet = Pet(name=name,
                   species=species,
                   photo_url=photo_url,
-                  age=age, notes=notes,
+                  age=age,
+                  notes=notes,
                   available=available)
 
         db.session.add(pet)
